@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<Demo.Core.Entities.News> list = ViewBag.data as List<Demo.Core.Entities.News>;
+}
+
+<div class="container">
+    <h2>لیست اخبار</h2>
+    <p>اطلاعات کلی اخبار</p>
+    <a class="btn btn-success" href="~/news/createnews">ایجاد خبر جدید</a>
+    <a class="btn btn-success" href="~/news/createcategory">ایجاد موضوع جدید</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>NewsTitle</th>
+                <th>Category</th>
+                <th>Summary</th>
+                <th>Description</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in list)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.CategoryId</td>
+                    <td>@item.Summery</td>
+                    <td>@item.Text</td>
+                    <td><a href="~/news/edit/@item.NewsId" class="btn btn-warning">ویرایش</a>|<a href="~/news/delete/@item.NewsId" class="btn btn-danger">حذف</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Demo.Core.Entities.Category
+    <div class="col-md-10 mx-auto py-4">
+        <div class="card">
+            <div class="card-header bg-primary text-uppercase text-white">
+                <h4>Add New </h4>
+            </div>
+            <div class="card-body">
+                <form enctype="multipart/form-data" asp-action="CreateCategory">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Title" class="control-label"></label>
+                                <input asp-for="Title" class="form-control" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+        <script type="text/javascript">// Add the following code if you want the name of the file appear on select
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });</script>
+    }
